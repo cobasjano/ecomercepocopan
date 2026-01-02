@@ -11,13 +11,13 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold text-primary">
-            Pocopan Toys
+            Pocopan Jugueteria®
           </Link>
           
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-text-dark hover:text-primary transition font-medium">Home</Link>
-            <Link href="/products" className="text-text-dark hover:text-primary transition font-medium">Products</Link>
-            <Link href="/cart" className="text-text-dark hover:text-primary transition font-medium">Cart</Link>
+            <Link href="/" className="text-text-dark hover:text-primary transition font-medium">Inicio</Link>
+            <Link href="/products" className="text-text-dark hover:text-primary transition font-medium">Productos</Link>
+            <Link href="/cart" className="text-text-dark hover:text-primary transition font-medium">Carrito</Link>
           </div>
 
           <button
@@ -32,9 +32,9 @@ export function Navbar() {
 
         {isOpen && (
           <div className="md:hidden pb-4 space-y-2">
-            <Link href="/" className="block text-text-dark hover:text-primary transition font-medium">Home</Link>
-            <Link href="/products" className="block text-text-dark hover:text-primary transition font-medium">Products</Link>
-            <Link href="/cart" className="block text-text-dark hover:text-primary transition font-medium">Cart</Link>
+            <Link href="/" className="block text-text-dark hover:text-primary transition font-medium">Inicio</Link>
+            <Link href="/products" className="block text-text-dark hover:text-primary transition font-medium">Productos</Link>
+            <Link href="/cart" className="block text-text-dark hover:text-primary transition font-medium">Carrito</Link>
           </div>
         )}
       </div>
