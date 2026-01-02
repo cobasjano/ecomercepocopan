@@ -10,7 +10,7 @@ export default function Home() {
       <section className="bg-white text-text-dark py-32 border-b border-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-6xl font-light tracking-tight mb-6">Bienvenido a Pocopan Jugueteria®</h1>
-          <p className="text-xl text-text-gray mb-10 max-w-2xl mx-auto font-light">Descubrí una selección de juguetes premium diseñados para inspirar el aprendizaje y la creatividad en cada etapa.</p>
+          <p className="text-xl text-text-gray mb-10 max-w-2xl mx-auto font-light">Eligiendo Desde 2002.</p>
           <Link
             href="/products"
             className="inline-block bg-primary text-white px-10 py-4 rounded-full font-medium hover:bg-orange-600 transition-all shadow-lg shadow-orange-200 hover:-translate-y-1"

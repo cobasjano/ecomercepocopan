@@ -55,9 +55,9 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
-        <Link href="/products" className="text-blue-600 hover:text-blue-800">
-          Back to Products
+        <h1 className="text-2xl font-light mb-4 uppercase tracking-widest text-text-dark">Producto no encontrado</h1>
+        <Link href="/products" className="text-primary hover:text-orange-700 transition-colors font-medium">
+          Volver a Productos
         </Link>
       </div>
     );

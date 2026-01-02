@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  @apply bg-bg-light text-text-dark font-sans;
+  @apply bg-bg-light text-text-dark font-sans text-base;
 }
 
 h1,
@@ -24,7 +24,7 @@ button {
 }
 
 a {
-  @apply text-secondary hover:text-blue-700;
+  @apply text-text-gray hover:text-orange-700;
 }
 
 .btn-primary {
@@ -32,7 +32,7 @@ a {
 }
 
 .btn-secondary {
-  @apply bg-secondary text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors;
+  @apply bg-primary text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors;
 }
 
 .btn-success {
