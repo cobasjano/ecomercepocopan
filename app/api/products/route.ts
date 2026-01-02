@@ -8,8 +8,10 @@ export async function GET(request: Request) {
     const minPrice = searchParams.get('min_price');
     const maxPrice = searchParams.get('max_price');
     const search = searchParams.get('search');
+    const page = parseInt(searchParams.get('page') || '1');
+    const pageSize = parseInt(searchParams.get('pageSize') || '20');
 
-    let query = supabase.from('products').select('*');
+    let query = supabase.from('products').select('*', { count: 'exact' });
 
     if (category) {
       query = query.eq('category', category);
@@ -27,13 +29,23 @@ export async function GET(request: Request) {
       query = query.ilike('name', `%${search}%`);
     }
 
-    const { data, error } = await query.order('created_at', { ascending: false });
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize - 1;
+
+    const { data, error, count } = await query
+      .order('name', { ascending: true })
+      .range(from, to);
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
-    return NextResponse.json({ products: data || [] });
+    return NextResponse.json({ 
+      products: data || [],
+      totalCount: count || 0,
+      page,
+      totalPages: Math.ceil((count || 0) / pageSize)
+    });
   } catch (error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

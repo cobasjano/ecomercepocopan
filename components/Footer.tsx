@@ -40,6 +40,7 @@ export function Footer() {
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500">
           <p>&copy; 2025 Pocopan Toys. Todos los derechos reservados.</p>
+          <Link href="/admin" className="text-xs mt-2 inline-block hover:text-gray-300">Admin</Link>
         </div>
       </div>
     </footer>
