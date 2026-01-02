@@ -1,81 +1,99 @@
 import Link from 'next/link';
+import { ProductCard } from '@/components/ProductCard';
 
 export default function Home() {
-  const whatsappMessage = encodeURIComponent("Quisiera recibir asesoramiento para elegir un producto!");
-  const whatsappNumber = "5492257660073"; // Store number
+  // Sample featured products - will be replaced with actual data from Supabase
+  const featuredProducts = [
+    {
+      id: '1',
+      name: 'Wooden Puzzle Set',
+      description: 'Educational wooden puzzle for kids',
+      price: 29.99,
+      stock_quantity: 50,
+      category: 'puzzles',
+      age_group: '3-5',
+      image_url: 'https://placehold.co/300x300?text=Puzzle',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    {
+      id: '2',
+      name: 'Building Blocks',
+      description: 'Colorful building blocks for creative play',
+      price: 39.99,
+      stock_quantity: 30,
+      category: 'building',
+      age_group: '2-4',
+      image_url: 'https://placehold.co/300x300?text=Blocks',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    {
+      id: '3',
+      name: 'Musical Instruments',
+      description: 'Set of 5 musical instruments for kids',
+      price: 34.99,
+      stock_quantity: 25,
+      category: 'music',
+      age_group: '3-6',
+      image_url: 'https://placehold.co/300x300?text=Music',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+  ];
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-white text-text-dark py-32 border-b border-gray-50">
+      <section className="bg-gradient-to-r from-primary to-orange-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-6xl font-light tracking-tight mb-6">Bienvenido a Pocopan Jugueteria®</h1>
-          <p className="text-xl text-text-gray mb-10 max-w-2xl mx-auto font-light">Eligiendo Desde 2002.</p>
+          <h1 className="text-5xl font-bold mb-4">Pocopan Jugueteria®</h1>
+          <p className="text-xl mb-8">Desde 2002</p>
           <Link
             href="/products"
-            className="inline-block bg-primary text-white px-10 py-4 rounded-full font-medium hover:bg-orange-600 transition-all shadow-lg shadow-orange-200 hover:-translate-y-1"
+            className="inline-block bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition"
           >
-            Explorar Colección
+            Buscar Productos.
           </Link>
         </div>
       </section>
 
-      {/* Asesoramiento Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <div className="border-t border-b border-gray-100 py-12 px-6">
-            <h2 className="text-2xl font-light tracking-wide mb-3 text-text-dark uppercase">Asesoramiento Personalizado</h2>
-            <p className="text-text-gray mb-8 font-light">Estamos para ayudarte a elegir el juguete perfecto. Conversá directamente con sus dueños.</p>
-            <a
-              href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary font-medium border-b border-primary pb-1 hover:text-orange-600 hover:border-orange-600 transition-all"
-            >
-              Consultar por WhatsApp
-            </a>
+      {/* Featured Products Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-4xl font-bold mb-12 text-center text-text-dark">Productos Destacados</h2>
+        <div className="max-h-[600px] overflow-y-auto pr-4 custom-scrollbar border border-gray-100 rounded-xl p-6 bg-white shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Puntos de Venta Section */}
-      <section className="bg-gray-50 py-24">
+      {/* Why Choose Us Section */}
+      <section className="bg-bg-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-light tracking-tight mb-16 text-center text-text-dark">Nuestros Puntos de Venta</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <a
-              href="https://maps.app.goo.gl/7Ub1zE6dxBUtt6q58"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group text-center"
-            >
-              <h3 className="text-xl font-medium mb-2 group-hover:text-primary transition-colors">Costa del Este</h3>
-              <p className="text-text-gray font-light">Las Camelias 93</p>
-              <p className="text-primary text-xs mt-4 font-medium opacity-0 group-hover:opacity-100 transition-all">Ver ubicación</p>
-            </a>
-            <a
-              href="https://maps.app.goo.gl/AQwasqMQtLsQwsFx7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group text-center"
-            >
-              <h3 className="text-xl font-medium mb-2 group-hover:text-primary transition-colors">Mar de las Pampas</h3>
-              <p className="text-text-gray font-light">Miguel Cané 30</p>
-              <p className="text-primary text-xs mt-4 font-medium opacity-0 group-hover:opacity-100 transition-all">Ver ubicación</p>
-            </a>
-            <a
-              href="https://maps.app.goo.gl/dDxvRG8rh5iVAy41A"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group text-center"
-            >
-              <h3 className="text-xl font-medium mb-2 group-hover:text-primary transition-colors">Costa Esmeralda</h3>
-              <p className="text-text-gray font-light">Paseo Comercial, Local 33</p>
-              <p className="text-primary text-xs mt-4 font-medium opacity-0 group-hover:opacity-100 transition-all">Ver ubicación</p>
-            </a>
+          <h2 className="text-4xl font-bold mb-12 text-center text-text-dark">¿Por Qué Elegir Pocopan Jugueteria®?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-8 bg-white rounded-lg shadow-sm border border-gray-100">
+              <div className="text-4xl mb-4">🎯</div>
+              <h3 className="text-xl font-bold mb-2 text-text-dark">Calidad Educativa</h3>
+              <p className="text-text-gray">Todos nuestros juguetes están diseñados para mejorar el aprendizaje y desarrollo cognitivo</p>
+            </div>
+            <div className="text-center p-8 bg-white rounded-lg shadow-sm border border-gray-100">
+              <div className="text-4xl mb-4">🛡️</div>
+              <h3 className="text-xl font-bold mb-2 text-text-dark">Seguridad Primero</h3>
+              <p className="text-text-gray">Cada producto cumple con estándares internacionales de seguridad</p>
+            </div>
+            <div className="text-center p-8 bg-white rounded-lg shadow-sm border border-gray-100">
+              <div className="text-4xl mb-4">⚡</div>
+              <h3 className="text-xl font-bold mb-2 text-text-dark">Envío Rápido</h3>
+              <p className="text-text-gray">Entrega rápida a través de Mercado Libre o retiro local</p>
+            </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }
