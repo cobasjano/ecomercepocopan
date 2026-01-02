@@ -35,7 +35,7 @@ export default function ContactPage() {
             <h2 className="text-2xl font-bold mb-6 text-text-dark">Nuestras Redes</h2>
             <div className="space-y-4">
               <a
-                href="https://wa.me/5491112345678" // Reemplazar con el número real si se conoce
+                href="https://wa.me/5492257660073" // Reemplazar con el número real si se conoce
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-lg bg-green-50 text-green-700 hover:bg-green-100 transition border border-green-100 group"
@@ -59,18 +59,36 @@ export default function ContactPage() {
           <div className="bg-white rounded-xl shadow-md p-8 border border-gray-100">
             <h2 className="text-2xl font-bold mb-4 text-text-dark">Nuestros Puntos de Venta</h2>
             <div className="space-y-4">
-              <div>
-                <p className="font-bold text-text-dark">Costa del Este</p>
+              <a
+                href="https://maps.app.goo.gl/7Ub1zE6dxBUtt6q58"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 rounded-lg hover:bg-bg-light transition group border border-transparent hover:border-gray-200"
+              >
+                <p className="font-bold text-text-dark group-hover:text-primary transition">Costa del Este</p>
                 <p className="text-text-gray">Las Camelias 93</p>
-              </div>
-              <div>
-                <p className="font-bold text-text-dark">Mar de las Pampas</p>
+                <p className="text-primary text-xs mt-1 font-semibold">Ver en Google Maps →</p>
+              </a>
+              <a
+                href="https://maps.app.goo.gl/AQwasqMQtLsQwsFx7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 rounded-lg hover:bg-bg-light transition group border border-transparent hover:border-gray-200"
+              >
+                <p className="font-bold text-text-dark group-hover:text-primary transition">Mar de las Pampas</p>
                 <p className="text-text-gray">Miguel Cané 30</p>
-              </div>
-              <div>
-                <p className="font-bold text-text-dark">Costa Esmeralda</p>
+                <p className="text-primary text-xs mt-1 font-semibold">Ver en Google Maps →</p>
+              </a>
+              <a
+                href="https://maps.app.goo.gl/dDxvRG8rh5iVAy41A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 rounded-lg hover:bg-bg-light transition group border border-transparent hover:border-gray-200"
+              >
+                <p className="font-bold text-text-dark group-hover:text-primary transition">Costa Esmeralda</p>
                 <p className="text-text-gray">Paseo Comercial, Local 33</p>
-              </div>
+                <p className="text-primary text-xs mt-1 font-semibold">Ver en Google Maps →</p>
+              </a>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ export default function AboutPage() {
       <h1 className="text-4xl font-bold mb-8">¿ Que es Pocopan Jugueteria® ? </h1>
       <div className="prose prose-lg max-w-none">
         <p>
-          Pocopan Jugueteria® es una juguetería atendida por sus dueños desde 2002.
+          Pocopan es una juguetería atendida por sus dueños desde 2002.
           Propone una selección de juguetes que conectan con la imaginación y la nostalgia.
           Nuestro catálogo contempla niños, adolescentes y adultos.
         </p>

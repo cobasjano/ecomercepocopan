@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Home() {
   const whatsappMessage = encodeURIComponent("Quisiera recibir asesoramiento para elegir un producto!");
-  const whatsappNumber = "5491112345678"; // Placeholder
+  const whatsappNumber = "5492257660073"; // Store number
 
   return (
     <div>
@@ -43,21 +43,39 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-12 text-center text-text-dark">Nuestros Puntos de Venta</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
-              <div className="text-3xl mb-4">🏖️</div>
-              <h3 className="text-xl font-bold mb-2">Costa del Este</h3>
+            <a
+              href="https://maps.app.goo.gl/7Ub1zE6dxBUtt6q58"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition group"
+            >
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🏖️</div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition">Costa del Este</h3>
               <p className="text-text-gray">Las Camelias 93</p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
-              <div className="text-3xl mb-4">🌲</div>
-              <h3 className="text-xl font-bold mb-2">Mar de las Pampas</h3>
+              <p className="text-primary text-sm mt-4 font-semibold opacity-0 group-hover:opacity-100 transition">Ver en Maps →</p>
+            </a>
+            <a
+              href="https://maps.app.goo.gl/AQwasqMQtLsQwsFx7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition group"
+            >
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🌲</div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition">Mar de las Pampas</h3>
               <p className="text-text-gray">Miguel Cané 30</p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
-              <div className="text-3xl mb-4">🏠</div>
-              <h3 className="text-xl font-bold mb-2">Costa Esmeralda</h3>
+              <p className="text-primary text-sm mt-4 font-semibold opacity-0 group-hover:opacity-100 transition">Ver en Maps →</p>
+            </a>
+            <a
+              href="https://maps.app.goo.gl/dDxvRG8rh5iVAy41A"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition group"
+            >
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🏠</div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition">Costa Esmeralda</h3>
               <p className="text-text-gray">Paseo Comercial, Local 33</p>
-            </div>
+              <p className="text-primary text-sm mt-4 font-semibold opacity-0 group-hover:opacity-100 transition">Ver en Maps →</p>
+            </a>
           </div>
         </div>
       </section>
