@@ -1,0 +1,15 @@
+.next/
+node_modules/
+*.log
+.env.local
+.env.*.local
+.vercel/
+dist/
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/*
+!.vscode/settings.json
+coverage/
