@@ -61,10 +61,12 @@ export default function Home() {
       {/* Featured Products Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className="text-4xl font-bold mb-12 text-center text-text-dark">Productos Destacados</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        <div className="max-h-[600px] overflow-y-auto pr-4 custom-scrollbar border border-gray-100 rounded-xl p-6 bg-white shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -92,26 +94,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="bg-primary text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Suscríbete a Nuestro Boletín</h2>
-          <p className="mb-6">Recibe actualizaciones sobre nuevos productos y ofertas especiales</p>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Ingresa tu email"
-              className="flex-grow px-4 py-2 rounded text-text-dark"
-            />
-            <button
-              type="submit"
-              className="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded font-bold transition"
-            >
-              Suscribirse
-            </button>
-          </form>
-        </div>
-      </section>
     </div>
   );
 }
