@@ -7,17 +7,17 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-b border-gray-200 shadow-sm">
+    <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-2xl font-bold text-primary">
+        <div className="flex justify-between items-center h-20">
+          <Link href="/" className="text-xl font-light tracking-widest uppercase text-text-dark">
             Pocopan Jugueteria®
           </Link>
           
-          <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-text-dark hover:text-primary transition font-medium">Inicio</Link>
-            <Link href="/products" className="text-text-dark hover:text-primary transition font-medium">Productos</Link>
-            <Link href="/cart" className="text-text-dark hover:text-primary transition font-medium">Carrito</Link>
+          <div className="hidden md:flex space-x-12">
+            <Link href="/" className="text-xs uppercase tracking-widest text-text-dark hover:text-primary transition-colors font-medium">Inicio</Link>
+            <Link href="/products" className="text-xs uppercase tracking-widest text-text-dark hover:text-primary transition-colors font-medium">Productos</Link>
+            <Link href="/cart" className="text-xs uppercase tracking-widest text-text-dark hover:text-primary transition-colors font-medium">Carrito</Link>
           </div>
 
           <button

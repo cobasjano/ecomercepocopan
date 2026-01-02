@@ -66,73 +66,80 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   const inStock = product.stock_quantity > 0;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       {/* Breadcrumb */}
-      <div className="mb-8">
-        <Link href="/" className="text-blue-600 hover:text-blue-800">Home</Link>
-        <span className="mx-2">/</span>
-        <Link href="/products" className="text-blue-600 hover:text-blue-800">Products</Link>
-        <span className="mx-2">/</span>
-        <span>{product.name}</span>
+      <div className="mb-12 flex items-center gap-2 text-xs uppercase tracking-widest text-text-gray font-light">
+        <Link href="/" className="hover:text-primary transition-colors">Inicio</Link>
+        <span>/</span>
+        <Link href="/products" className="hover:text-primary transition-colors">Productos</Link>
+        <span>/</span>
+        <span className="text-text-dark font-medium">{product.name}</span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
         {/* Image */}
-        <div className="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
+        <div className="aspect-square bg-gray-50 overflow-hidden">
           {product.image_url ? (
             <img
               src={product.image_url}
               alt={product.name}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = `https://placehold.co/600x600?text=${encodeURIComponent(product.name)}`;
+                (e.target as HTMLImageElement).src = `https://placehold.co/1200x1200?text=${encodeURIComponent(product.name)}`;
               }}
             />
           ) : (
-            <div className="text-gray-400 text-center">
-              <div className="text-6xl mb-2">📦</div>
-              <p>No image available</p>
+            <div className="w-full h-full flex items-center justify-center text-gray-300 font-light uppercase tracking-widest">
+              Sin imagen
             </div>
           )}
         </div>
 
         {/* Details */}
         <div>
-          <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
+          <h1 className="text-4xl font-light tracking-tight text-text-dark mb-6 uppercase tracking-tighter">{product.name}</h1>
 
-          {product.age_group && (
-            <p className="text-lg text-gray-600 mb-4">Age Group: {product.age_group}</p>
-          )}
-
-          <p className="text-3xl font-bold text-secondary mb-4">
-            ${product.price.toFixed(2)}
+          <p className="text-3xl font-light text-text-dark mb-8">
+            ${product.price.toFixed(0)}
           </p>
 
-          <p className="text-gray-700 mb-6 leading-relaxed">
-            {product.description}
-          </p>
+          <div className="prose prose-sm max-w-none text-text-gray font-light leading-relaxed mb-10 pb-10 border-b border-gray-50">
+            <p>{product.description}</p>
+          </div>
 
-          <div className="mb-6">
-            <p className="text-lg font-semibold mb-2">Category: {product.category}</p>
-            <p className={`text-lg font-semibold ${inStock ? 'text-green-600' : 'text-red-600'}`}>
-              {inStock ? `In Stock (${product.stock_quantity} available)` : 'Out of Stock'}
-            </p>
+          <div className="space-y-6 mb-12">
+            {product.age_group && (
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-text-gray font-light uppercase tracking-widest text-xs">Edad recomendada</span>
+                <span className="text-text-dark font-medium">{product.age_group}</span>
+              </div>
+            )}
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-text-gray font-light uppercase tracking-widest text-xs">Categoría</span>
+              <span className="text-text-dark font-medium">{product.category}</span>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-text-gray font-light uppercase tracking-widest text-xs">Disponibilidad</span>
+              <span className={`font-medium ${inStock ? 'text-success' : 'text-danger'}`}>
+                {inStock ? 'En Stock' : 'Sin Stock'}
+              </span>
+            </div>
           </div>
 
           {inStock && (
-            <div className="mb-6">
-              <label className="block text-sm font-semibold mb-2">Quantity:</label>
-              <div className="flex items-center gap-4">
+            <div className="mb-10">
+              <label className="block text-xs font-semibold uppercase tracking-widest text-text-gray mb-4">Cantidad</label>
+              <div className="flex items-center border border-gray-100 rounded-full w-fit px-6 py-2">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100"
+                  className="text-text-dark hover:text-primary transition-colors p-2"
                 >
                   -
                 </button>
-                <span className="text-xl font-semibold">{quantity}</span>
+                <span className="w-12 text-center font-medium">{quantity}</span>
                 <button
                   onClick={() => setQuantity(Math.min(product.stock_quantity, quantity + 1))}
-                  className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100"
+                  className="text-text-dark hover:text-primary transition-colors p-2"
                 >
                   +
                 </button>
@@ -140,23 +147,23 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             </div>
           )}
 
-          <div className="flex gap-4">
+          <div className="flex flex-col gap-4">
             <button
               onClick={handleAddToCart}
               disabled={!inStock}
-              className={`flex-grow px-8 py-3 rounded-lg font-bold text-white transition ${
+              className={`w-full py-4 rounded-full font-medium transition-all shadow-lg ${
                 inStock
-                  ? 'bg-secondary hover:bg-yellow-600'
-                  : 'bg-gray-400 cursor-not-allowed'
+                  ? 'bg-primary text-white hover:bg-orange-600 shadow-orange-100 hover:-translate-y-1'
+                  : 'bg-gray-100 text-gray-400 cursor-not-allowed'
               }`}
             >
-              {inStock ? 'Add to Cart' : 'Out of Stock'}
+              {inStock ? 'Añadir al Carrito' : 'Sin Stock'}
             </button>
             <Link
               href="/products"
-              className="px-8 py-3 border border-primary text-primary rounded-lg font-bold hover:bg-gray-100 transition"
+              className="w-full py-4 text-center border border-gray-100 rounded-full text-text-gray hover:bg-gray-50 transition-all font-medium text-sm uppercase tracking-widest"
             >
-              Back
+              Volver a la tienda
             </Link>
           </div>
         </div>

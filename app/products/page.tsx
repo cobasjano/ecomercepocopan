@@ -104,9 +104,12 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-        <h1 className="text-4xl font-bold text-text-dark">Productos</h1>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <div>
+          <h1 className="text-4xl font-light tracking-tight text-text-dark mb-2">Colección</h1>
+          <p className="text-text-gray font-light">Explorá nuestra selección de juguetes educativos.</p>
+        </div>
         
         {/* Search Bar */}
         <div className="relative w-full md:w-96">
@@ -115,24 +118,23 @@ export default function ProductsPage() {
             placeholder="Buscar productos..."
             value={searchTerm}
             onChange={handleSearchChange}
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            className="w-full px-0 py-3 bg-transparent border-b border-gray-200 focus:border-primary transition-colors focus:outline-none font-light"
           />
-          <span className="absolute right-3 top-2.5 text-gray-400">🔍</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Sidebar Filters */}
         <div className="md:col-span-1">
-          <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100 sticky top-24">
-            <h2 className="text-xl font-bold mb-4 text-text-dark">Categorías</h2>
-            <div className="max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+          <div className="sticky top-24">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-text-gray mb-6">Categorías</h2>
+            <div className="flex flex-col gap-2">
               <button
                 onClick={() => handleCategoryChange(null)}
-                className={`block w-full text-left py-2 px-3 rounded mb-2 transition font-medium ${
+                className={`text-left py-1 transition-all font-light ${
                   selectedCategory === null
-                    ? 'bg-primary text-white'
-                    : 'text-text-dark hover:bg-bg-light'
+                    ? 'text-primary border-l-2 border-primary pl-4'
+                    : 'text-text-dark hover:text-primary pl-0'
                 }`}
               >
                 Todos los Productos
@@ -141,10 +143,10 @@ export default function ProductsPage() {
                 <button
                   key={category}
                   onClick={() => handleCategoryChange(category)}
-                  className={`block w-full text-left py-2 px-3 rounded mb-2 transition font-medium ${
+                  className={`text-left py-1 transition-all font-light ${
                     selectedCategory === category
-                      ? 'bg-primary text-white'
-                      : 'text-text-dark hover:bg-bg-light'
+                      ? 'text-primary border-l-2 border-primary pl-4'
+                      : 'text-text-dark hover:text-primary pl-0'
                   }`}
                 >
                   {CATEGORY_NAMES[category] || category}
@@ -157,49 +159,47 @@ export default function ProductsPage() {
         {/* Products Grid */}
         <div className="md:col-span-3">
           {loading ? (
-            <div className="text-center py-12">
-              <p className="text-lg text-text-gray">Cargando productos...</p>
+            <div className="py-24 text-center">
+              <p className="text-text-gray font-light animate-pulse">Cargando...</p>
             </div>
           ) : products.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-lg text-text-gray">No se encontraron productos</p>
+            <div className="py-24 text-center">
+              <p className="text-text-gray font-light">No se encontraron resultados.</p>
             </div>
           ) : (
             <>
-              <div className="max-h-[800px] overflow-y-auto pr-4 custom-scrollbar border border-gray-100 rounded-xl p-6 bg-white shadow-sm mb-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {products.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                {products.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
               </div>
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-4 mt-8">
+                <div className="flex justify-center items-center gap-8 mt-20 border-t border-gray-50 pt-10">
                   <button
                     onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                     disabled={currentPage === 1}
-                    className={`px-4 py-2 rounded-lg border font-bold transition ${
+                    className={`font-medium transition-colors ${
                       currentPage === 1
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                        : 'border-primary text-primary hover:bg-primary hover:text-white'
+                        ? 'text-gray-200 cursor-not-allowed'
+                        : 'text-text-dark hover:text-primary'
                     }`}
                   >
                     Anterior
                   </button>
                   
-                  <span className="text-text-dark font-medium">
-                    Página {currentPage} de {totalPages}
+                  <span className="text-text-gray text-sm font-light">
+                    {currentPage} / {totalPages}
                   </span>
 
                   <button
                     onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                     disabled={currentPage === totalPages}
-                    className={`px-4 py-2 rounded-lg border font-bold transition ${
+                    className={`font-medium transition-colors ${
                       currentPage === totalPages
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                        : 'border-primary text-primary hover:bg-primary hover:text-white'
+                        ? 'text-gray-200 cursor-not-allowed'
+                        : 'text-text-dark hover:text-primary'
                     }`}
                   >
                     Siguiente
