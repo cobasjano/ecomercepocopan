@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ProductCard } from '@/components/ProductCard';
 
 export default function Home() {
   const whatsappMessage = encodeURIComponent("Quisiera recibir asesoramiento para elegir un producto!");
