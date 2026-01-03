@@ -49,57 +49,78 @@ export default function Home() {
   ];
 
   return (
-    <div>
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-orange-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold mb-4">Pocopán Jugueteria®</h1>
-          <p className="text-xl mb-8">Desde 2002</p>
+      <section className="relative overflow-hidden bg-white border-b border-gray-50 py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-6xl font-light tracking-tight text-text-dark mb-6 uppercase">
+            Pocopán Jugueteria®
+          </h1>
+          <p className="text-sm font-light uppercase tracking-widest text-text-gray mb-12">
+            Desde 2002 • Curando Imaginación y Nostalgia
+          </p>
           <Link
             href="/products"
-            className="inline-block bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition"
+            className="inline-block bg-text-dark text-white px-10 py-4 rounded-full font-medium hover:bg-primary transition-all shadow-lg shadow-gray-100 hover:-translate-y-1 text-xs uppercase tracking-widest"
           >
-            Buscar Productos.
+            Explorar Colección
+          </Link>
+        </div>
+        
+        {/* Subtle Decorative Elements */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+      </section>
+
+      {/* Featured Products Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="flex flex-col items-center mb-16">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">Selección Especial</h2>
+          <h3 className="text-3xl font-light tracking-tight text-text-dark text-center uppercase">Productos Destacados</h3>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {featuredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <Link href="/products" className="text-xs font-medium uppercase tracking-widest text-text-gray hover:text-primary border-b border-gray-200 pb-1 transition-all">
+            Ver Todos los Productos →
           </Link>
         </div>
       </section>
 
-      {/* Featured Products Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-4xl font-bold mb-12 text-center text-text-dark">Productos Destacados</h2>
-        <div className="max-h-[600px] overflow-y-auto pr-4 custom-scrollbar border border-gray-100 rounded-xl p-6 bg-white shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Us Section */}
-      <section className="bg-bg-light py-16">
+      <section className="bg-gray-50/50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-12 text-center text-text-dark">¿Por Qué Elegir Pocopán Jugueteria®?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-white rounded-lg shadow-sm border border-gray-100">
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-xl font-bold mb-2 text-text-dark">Calidad Educativa</h3>
-              <p className="text-text-gray">Todos nuestros juguetes están diseñados para mejorar el aprendizaje y desarrollo cognitivo</p>
+          <div className="text-center mb-20">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">Compromiso</h2>
+            <h3 className="text-3xl font-light tracking-tight text-text-dark uppercase">¿Por Qué Elegir Pocopán?</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+            <div className="group">
+              <div className="text-3xl mb-8 grayscale group-hover:grayscale-0 transition-all duration-500">🎯</div>
+              <h4 className="text-sm font-semibold mb-4 text-text-dark uppercase tracking-widest">Calidad Educativa</h4>
+              <p className="text-sm text-text-gray font-light leading-relaxed">Cada juguete es seleccionado para inspirar el aprendizaje y el desarrollo cognitivo a través del juego.</p>
             </div>
-            <div className="text-center p-8 bg-white rounded-lg shadow-sm border border-gray-100">
-              <div className="text-4xl mb-4">🛡️</div>
-              <h3 className="text-xl font-bold mb-2 text-text-dark">Seguridad Primero</h3>
-              <p className="text-text-gray">Cada producto cumple con estándares internacionales de seguridad</p>
+            
+            <div className="group">
+              <div className="text-3xl mb-8 grayscale group-hover:grayscale-0 transition-all duration-500">🛡️</div>
+              <h4 className="text-sm font-semibold mb-4 text-text-dark uppercase tracking-widest">Seguridad</h4>
+              <p className="text-sm text-text-gray font-light leading-relaxed">Priorizamos la tranquilidad de la familia con productos que cumplen con los más altos estándares.</p>
             </div>
-            <div className="text-center p-8 bg-white rounded-lg shadow-sm border border-gray-100">
-              <div className="text-4xl mb-4">⚡</div>
-              <h3 className="text-xl font-bold mb-2 text-text-dark">Envío Rápido</h3>
-              <p className="text-text-gray">Entrega rápida a través de Mercado Libre o retiro local</p>
+            
+            <div className="group">
+              <div className="text-3xl mb-8 grayscale group-hover:grayscale-0 transition-all duration-500">⚡</div>
+              <h4 className="text-sm font-semibold mb-4 text-text-dark uppercase tracking-widest">Experiencia</h4>
+              <p className="text-sm text-text-gray font-light leading-relaxed">Desde 2002 brindamos atención personalizada y envíos rápidos a todo el país.</p>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

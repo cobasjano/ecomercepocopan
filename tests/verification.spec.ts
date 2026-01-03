@@ -4,7 +4,7 @@ test.describe('Pocopán Jugueteria Verification', () => {
   test('should display Pocopán with accent on Home Page', async ({ page }) => {
     await page.goto('http://localhost:3000');
     await expect(page.locator('h1')).toContainText('Pocopán Jugueteria®');
-    await expect(page.getByText('¿Por Qué Elegir Pocopán Jugueteria®?')).toBeVisible();
+    await expect(page.getByText('¿Por Qué Elegir Pocopán?')).toBeVisible();
   });
 
   test('should display Pocopán with accent in Navbar', async ({ page }) => {
