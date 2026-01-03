@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -23,15 +23,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
 
   const isNew = params.id === 'new';
 
-  useEffect(() => {
-    if (!isNew) {
-      fetchProduct();
-    } else {
-      setLoading(false);
-    }
-  }, [params.id]);
-
-  const fetchProduct = async () => {
+  const fetchProduct = useCallback(async () => {
     try {
       setLoading(true);
       const { data, error } = await supabase
@@ -47,7 +39,15 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
     } finally {
       setLoading(false);
     }
-  };
+  }, [params.id]);
+
+  useEffect(() => {
+    if (!isNew) {
+      fetchProduct();
+    } else {
+      setLoading(false);
+    }
+  }, [isNew, fetchProduct]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -216,11 +216,11 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                 className="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded"
               />
               <label htmlFor="is_out_of_stock" className="ml-3 text-sm font-bold text-gray-700">
-                Marcar como "Sin Stock" manualmente
+                Marcar como &quot;Sin Stock&quot; manualmente
               </label>
             </div>
             <p className="text-xs text-text-gray font-light mt-2">
-              * Los productos con stock 0 también se mostrarán como "Sin Stock" automáticamente.
+              * Los productos con stock 0 también se mostrarán como &quot;Sin Stock&quot; automáticamente.
             </p>
           </div>
 
