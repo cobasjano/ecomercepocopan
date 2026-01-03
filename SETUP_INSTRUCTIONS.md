@@ -1,4 +1,4 @@
-# Pocopan Jugueteria® E-Commerce Setup Instructions
+# Pocopán Jugueteria® E-Commerce Setup Instructions
 
 ## Phase 1 Complete ✅
 

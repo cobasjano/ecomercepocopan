@@ -47,7 +47,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-orange-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold mb-4">Pocopan Jugueteria®</h1>
+          <h1 className="text-5xl font-bold mb-4">Pocopán Jugueteria®</h1>
           <p className="text-xl mb-8">Desde 2002</p>
           <Link
             href="/products"
@@ -73,7 +73,7 @@ export default function Home() {
       {/* Why Choose Us Section */}
       <section className="bg-bg-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-12 text-center text-text-dark">¿Por Qué Elegir Pocopan Jugueteria®?</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center text-text-dark">¿Por Qué Elegir Pocopán Jugueteria®?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-8 bg-white rounded-lg shadow-sm border border-gray-100">
               <div className="text-4xl mb-4">🎯</div>

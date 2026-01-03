@@ -66,6 +66,7 @@ export default function AdminProductsPage() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
             </tr>
           </thead>
@@ -103,6 +104,20 @@ export default function AdminProductsPage() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {product.stock_quantity}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <div className="flex flex-col gap-1">
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        product.is_visible ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                      }`}>
+                        {product.is_visible ? 'Visible' : 'Oculto'}
+                      </span>
+                      {product.is_out_of_stock && (
+                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                          Sin Stock (Manual)
+                        </span>
+                      )}
+                    </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <Link 

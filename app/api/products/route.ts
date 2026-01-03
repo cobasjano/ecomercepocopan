@@ -10,8 +10,13 @@ export async function GET(request: Request) {
     const search = searchParams.get('search');
     const page = parseInt(searchParams.get('page') || '1');
     const pageSize = parseInt(searchParams.get('pageSize') || '20');
+    const isAdmin = searchParams.get('admin') === 'true';
 
     let query = supabase.from('products').select('*', { count: 'exact' });
+
+    if (!isAdmin) {
+      query = query.eq('is_visible', true);
+    }
 
     if (category) {
       query = query.eq('category', category);

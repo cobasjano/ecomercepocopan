@@ -1,4 +1,4 @@
-# Quick Start Guide - Pocopan Jugueteria® E-Commerce
+# Quick Start Guide - Pocopán Jugueteria® E-Commerce
 
 ## 🚀 Get Running in 5 Minutes
 

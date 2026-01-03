@@ -63,7 +63,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     );
   }
 
-  const inStock = product.stock_quantity > 0;
+  const inStock = product.stock_quantity > 0 && !product.is_out_of_stock;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">

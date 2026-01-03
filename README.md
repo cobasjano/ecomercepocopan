@@ -1,4 +1,4 @@
-# Pocopan Jugueteria® - E-Commerce Platform
+# Pocopán Jugueteria® - E-Commerce Platform
 
 A modern, full-stack e-commerce platform for selling educational toys and children's products. Built with Next.js, TypeScript, Supabase, and Tailwind CSS.
 
@@ -117,7 +117,7 @@ MIT
 
 ## 👤 Author
 
-Built for Pocopan Jugueteria® - Educational Toys Store
+Built for Pocopán Jugueteria® - Educational Toys Store
 
 ## 📞 Support
 

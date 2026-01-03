@@ -7,6 +7,8 @@ export interface Product {
   category: string;
   age_group?: string;
   image_url?: string;
+  is_visible: boolean;
+  is_out_of_stock: boolean;
   created_at: string;
   updated_at: string;
 }

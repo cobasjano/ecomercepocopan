@@ -63,8 +63,7 @@ export default function CartPage() {
     return sum + (product?.price || 0) * item.quantity;
   }, 0);
 
-  const tax = subtotal * 0.10;
-  const total = subtotal + tax;
+  const total = subtotal;
 
   const handleWhatsAppCheckout = () => {
     const message = `Hola! Quisiera los siguientes productos:\n\n` +
@@ -174,10 +173,6 @@ export default function CartPage() {
                 <div className="flex justify-between text-text-gray">
                   <span>Subtotal</span>
                   <span>${subtotal.toFixed(0)}</span>
-                </div>
-                <div className="flex justify-between text-text-gray">
-                  <span>Impuestos</span>
-                  <span>${tax.toFixed(0)}</span>
                 </div>
                 <div className="pt-6 flex justify-between text-lg font-medium text-text-dark border-t border-gray-200">
                   <span>Total</span>

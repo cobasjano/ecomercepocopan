@@ -16,7 +16,9 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
     stock_quantity: 0,
     category: '',
     age_group: '',
-    image_url: ''
+    image_url: '',
+    is_visible: true,
+    is_out_of_stock: false
   });
 
   const isNew = params.id === 'new';
@@ -76,10 +78,12 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target as HTMLInputElement;
+    const val = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    
     setProduct(prev => ({
       ...prev,
-      [name]: name === 'price' || name === 'stock_quantity' ? parseFloat(value) || 0 : value
+      [name]: name === 'price' || name === 'stock_quantity' ? parseFloat(value) || 0 : val
     }));
   };
 
@@ -186,6 +190,38 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                 <img src={product.image_url} alt="Vista previa" className="h-full w-full object-cover" />
               </div>
             )}
+          </div>
+
+          <div className="flex flex-col gap-4 bg-gray-50 p-6 rounded-lg border border-gray-100">
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                name="is_visible"
+                id="is_visible"
+                checked={product.is_visible}
+                onChange={handleChange}
+                className="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded"
+              />
+              <label htmlFor="is_visible" className="ml-3 text-sm font-bold text-gray-700">
+                Visible en el catálogo
+              </label>
+            </div>
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                name="is_out_of_stock"
+                id="is_out_of_stock"
+                checked={product.is_out_of_stock}
+                onChange={handleChange}
+                className="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded"
+              />
+              <label htmlFor="is_out_of_stock" className="ml-3 text-sm font-bold text-gray-700">
+                Marcar como "Sin Stock" manualmente
+              </label>
+            </div>
+            <p className="text-xs text-text-gray font-light mt-2">
+              * Los productos con stock 0 también se mostrarán como "Sin Stock" automáticamente.
+            </p>
           </div>
 
           <button

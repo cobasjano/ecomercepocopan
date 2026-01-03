@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Pocopan Jugueteria® - Educational Toys for Kids",
+  title: "Pocopán Jugueteria® - Educational Toys for Kids",
   description: "Shop high-quality educational toys and games for children",
 };
 
