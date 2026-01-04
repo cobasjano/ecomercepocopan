@@ -39,7 +39,7 @@ export default function Home() {
             rel="noopener noreferrer" 
             className="group text-center block p-8 rounded-2xl hover:bg-gray-50 transition-all duration-300 border border-transparent hover:border-gray-100"
           >
-            <div className="mb-6 text-3xl grayscale group-hover:grayscale-0 transition-all duration-500">📍</div>
+            <div className="mb-6 text-3xl grayscale group-hover:grayscale-0 transition-all duration-500"></div>
             <h4 className="text-sm font-semibold mb-2 text-text-dark uppercase tracking-widest group-hover:text-primary transition-colors">Costa del Este</h4>
             <p className="text-xs text-text-gray font-light uppercase tracking-widest">Las Camelias 93</p>
           </a>
@@ -50,7 +50,7 @@ export default function Home() {
             rel="noopener noreferrer" 
             className="group text-center block p-8 rounded-2xl hover:bg-gray-50 transition-all duration-300 border border-transparent hover:border-gray-100"
           >
-            <div className="mb-6 text-3xl grayscale group-hover:grayscale-0 transition-all duration-500">📍</div>
+            <div className="mb-6 text-3xl grayscale group-hover:grayscale-0 transition-all duration-500"></div>
             <h4 className="text-sm font-semibold mb-2 text-text-dark uppercase tracking-widest group-hover:text-primary transition-colors">Mar de las Pampas</h4>
             <p className="text-xs text-text-gray font-light uppercase tracking-widest">Miguel Cané 30</p>
           </a>
@@ -61,7 +61,7 @@ export default function Home() {
             rel="noopener noreferrer" 
             className="group text-center block p-8 rounded-2xl hover:bg-gray-50 transition-all duration-300 border border-transparent hover:border-gray-100"
           >
-            <div className="mb-6 text-3xl grayscale group-hover:grayscale-0 transition-all duration-500">📍</div>
+            <div className="mb-6 text-3xl grayscale group-hover:grayscale-0 transition-all duration-500"></div>
             <h4 className="text-sm font-semibold mb-2 text-text-dark uppercase tracking-widest group-hover:text-primary transition-colors">Costa Esmeralda</h4>
             <p className="text-xs text-text-gray font-light uppercase tracking-widest">Paseo Comercial, Local 33</p>
           </a>
