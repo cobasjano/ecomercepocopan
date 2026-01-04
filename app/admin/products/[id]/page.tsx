@@ -13,7 +13,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
     name: '',
     description: '',
     price: 0,
-    stock_quantity: 0,
+    stock_quantity: 1,
     category: '',
     age_group: '',
     image_url: '',

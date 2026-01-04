@@ -14,12 +14,10 @@ export async function GET(request: Request) {
 
     let query = supabase.from('products').select('*', { count: 'exact' });
 
-    // Temporary: Disable visibility filter until DB is updated with the new columns
-    /*
-    if (!isAdmin) {
-      query = query.eq('is_visible', true);
-    }
-    */
+    // Filter only visible products for regular users
+    // if (!isAdmin) {
+    query = query.eq('is_visible', true);
+    // }
 
     if (category) {
       query = query.eq('category', category);

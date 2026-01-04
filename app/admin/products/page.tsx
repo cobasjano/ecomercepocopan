@@ -31,6 +31,61 @@ export default function AdminProductsPage() {
     }
   };
 
+  const toggleVisibility = async (product: Product) => {
+    try {
+      const { error } = await supabase
+        .from('products')
+        .update({ is_visible: !product.is_visible })
+        .eq('id', product.id);
+
+      if (error) throw error;
+      
+      setProducts(products.map(p => 
+        p.id === product.id ? { ...p, is_visible: !p.is_visible } : p
+      ));
+    } catch (error) {
+      console.error('Error updating visibility:', error);
+    }
+  };
+
+  const toggleStock = async (product: Product) => {
+    try {
+      const { error } = await supabase
+        .from('products')
+        .update({ is_out_of_stock: !product.is_out_of_stock })
+        .eq('id', product.id);
+
+      if (error) throw error;
+      
+      setProducts(products.map(p => 
+        p.id === product.id ? { ...p, is_out_of_stock: !p.is_out_of_stock } : p
+      ));
+    } catch (error) {
+      console.error('Error updating stock:', error);
+    }
+  };
+
+  const makeAllVisibleAndInStock = async () => {
+    if (!confirm('¿Estás seguro de que quieres poner todos los productos como VISIBLES y CON STOCK?')) return;
+    
+    try {
+      setLoading(true);
+      const { error } = await supabase
+        .from('products')
+        .update({ is_visible: true, is_out_of_stock: false, stock_quantity: 1 })
+        .neq('id', '00000000-0000-0000-0000-000000000000'); // Update all
+
+      if (error) throw error;
+      await fetchProducts();
+      alert('Todos los productos han sido actualizados');
+    } catch (error) {
+      console.error('Error in bulk update:', error);
+      alert('Error en la actualización masiva');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const filteredProducts = products.filter(p => 
     p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     p.category.toLowerCase().includes(searchTerm.toLowerCase())
@@ -40,12 +95,20 @@ export default function AdminProductsPage() {
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Panel de Administración</h1>
-        <Link 
-          href="/admin/products/new" 
-          className="bg-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-600 transition"
-        >
-          + Nuevo Producto
-        </Link>
+        <div className="flex gap-4">
+          <button
+            onClick={makeAllVisibleAndInStock}
+            className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-bold hover:bg-gray-200 transition"
+          >
+            Restablecer Todos
+          </button>
+          <Link 
+            href="/admin/products/new" 
+            className="bg-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-600 transition"
+          >
+            + Nuevo Producto
+          </Link>
+        </div>
       </div>
 
       <div className="mb-6">
@@ -106,17 +169,27 @@ export default function AdminProductsPage() {
                     {product.stock_quantity}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
-                    <div className="flex flex-col gap-1">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        product.is_visible ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                      }`}>
-                        {product.is_visible ? 'Visible' : 'Oculto'}
-                      </span>
-                      {product.is_out_of_stock && (
-                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-                          Sin Stock (Manual)
-                        </span>
-                      )}
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => toggleVisibility(product)}
+                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                          product.is_visible 
+                            ? 'bg-green-100 text-green-800 hover:bg-green-200' 
+                            : 'bg-red-100 text-red-800 hover:bg-red-200'
+                        }`}
+                      >
+                        {product.is_visible ? 'VISIBLE' : 'OCULTO'}
+                      </button>
+                      <button
+                        onClick={() => toggleStock(product)}
+                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                          !product.is_out_of_stock
+                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
+                            : 'bg-orange-100 text-orange-800 hover:bg-orange-200'
+                        }`}
+                      >
+                        {product.is_out_of_stock ? 'SIN STOCK' : 'CON STOCK'}
+                      </button>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
