@@ -121,58 +121,58 @@ export default function AdminProductsPage() {
         />
       </div>
 
-      <div className="bg-white rounded-lg shadow overflow-hidden border border-gray-200">
-        <table className="min-w-full divide-y divide-gray-200">
+      <div className="bg-white rounded-lg shadow overflow-x-auto border border-gray-200">
+        <table className="min-w-full divide-y divide-gray-200 table-fixed">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Producto</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+              <th className="w-1/3 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Producto</th>
+              <th className="w-1/6 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría</th>
+              <th className="w-1/8 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>
+              <th className="w-1/12 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">Stock</th>
+              <th className="w-1/4 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+              <th className="w-20 px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {loading ? (
               <tr>
-                <td colSpan={5} className="px-6 py-12 text-center text-gray-500">Cargando productos...</td>
+                <td colSpan={6} className="px-4 py-12 text-center text-gray-500">Cargando productos...</td>
               </tr>
             ) : filteredProducts.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-6 py-12 text-center text-gray-500">No se encontraron productos</td>
+                <td colSpan={6} className="px-4 py-12 text-center text-gray-500">No se encontraron productos</td>
               </tr>
             ) : (
               filteredProducts.map((product) => (
-                <tr key={product.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap">
+                <tr key={product.id} className="hover:bg-gray-50 text-sm">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="h-10 w-10 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
+                      <div className="h-8 w-8 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
                         {product.image_url ? (
-                          <img src={product.image_url} alt="" className="h-10 w-10 object-cover" />
+                          <img src={product.image_url} alt="" className="h-8 w-8 object-cover" />
                         ) : (
-                          <div className="h-10 w-10 flex items-center justify-center text-xl">📦</div>
+                          <div className="h-8 w-8 flex items-center justify-center text-sm">📦</div>
                         )}
                       </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">{product.name}</div>
+                      <div className="ml-3">
+                        <div className="font-medium text-gray-900 truncate max-w-[200px]" title={product.name}>{product.name}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-4 py-4 whitespace-nowrap text-gray-500">
                     {product.category}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">
-                    ${product.price.toFixed(2)}
+                  <td className="px-4 py-4 whitespace-nowrap text-gray-900 font-bold">
+                    ${product.price.toFixed(0)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-4 py-4 whitespace-nowrap text-gray-500 text-center">
                     {product.stock_quantity}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm">
-                    <div className="flex gap-2">
+                  <td className="px-4 py-4 whitespace-nowrap">
+                    <div className="flex gap-1">
                       <button
                         onClick={() => toggleVisibility(product)}
-                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                        className={`px-2 py-1 rounded-full text-[10px] font-bold transition-colors ${
                           product.is_visible 
                             ? 'bg-green-100 text-green-800 hover:bg-green-200' 
                             : 'bg-red-100 text-red-800 hover:bg-red-200'
@@ -182,7 +182,7 @@ export default function AdminProductsPage() {
                       </button>
                       <button
                         onClick={() => toggleStock(product)}
-                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                        className={`px-2 py-1 rounded-full text-[10px] font-bold transition-colors ${
                           !product.is_out_of_stock
                             ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
                             : 'bg-orange-100 text-orange-800 hover:bg-orange-200'
@@ -192,10 +192,10 @@ export default function AdminProductsPage() {
                       </button>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <td className="px-4 py-4 whitespace-nowrap text-right text-xs font-medium">
                     <Link 
                       href={`/admin/products/${product.id}`}
-                      className="text-primary hover:text-orange-600 mr-4"
+                      className="text-primary hover:text-orange-600"
                     >
                       Editar
                     </Link>
