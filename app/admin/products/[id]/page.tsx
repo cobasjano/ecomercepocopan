@@ -220,7 +220,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
               </label>
             </div>
             <p className="text-xs text-text-gray font-light mt-2">
-              * Los productos con stock 0 también se mostrarán como &quot;Sin Stock&quot; automáticamente.
+              * Marcar un producto como &quot;Sin Stock&quot; lo deshabilitará para la compra en el catálogo.
             </p>
           </div>
 

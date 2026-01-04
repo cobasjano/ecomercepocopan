@@ -63,7 +63,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     );
   }
 
-  const inStock = product.stock_quantity > 0 && !product.is_out_of_stock;
+  const inStock = !product.is_out_of_stock;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -138,7 +138,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 </button>
                 <span className="w-12 text-center font-medium">{quantity}</span>
                 <button
-                  onClick={() => setQuantity(Math.min(product.stock_quantity, quantity + 1))}
+                  onClick={() => setQuantity(quantity + 1)}
                   className="text-text-dark hover:text-primary transition-colors p-2"
                 >
                   +

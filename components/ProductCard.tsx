@@ -8,7 +8,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const inStock = product.stock_quantity > 0 && !product.is_out_of_stock;
+  const inStock = !product.is_out_of_stock;
 
   return (
     <Link href={`/products/${product.id}`} className="group h-full flex flex-col">
